@@ -146,7 +146,6 @@ li span {
 .last_reply {
   text-align: right;
   min-width: 50px;
-  display: inline-block;
   white-space: nowrap;
   float: right;
   color: #778087;
