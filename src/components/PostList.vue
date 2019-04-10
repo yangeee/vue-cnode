@@ -19,7 +19,14 @@
             <span
               :class="[{put_good: (post.good == true), put_top: (post.top == true), 'topiclist-tab':(post.good != true && post.top != true)}]"
             >{{ post | tabFormatter}}</span>
+            <router-link :to="{
+              name:'post_content',
+              params:{
+                id: post.id
+              }
+            }">
             <span>{{post.title}}</span>
+            </router-link>
             <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
           </span>
         </li>
@@ -30,6 +37,7 @@
 
 
 <script>
+import { log } from 'util';
 export default {
   name: 'PostList',
   data() {
@@ -48,6 +56,8 @@ export default {
           this.isLoading = true
           this.posts = res.data.data
           console.log(res)
+          
+          
         })
         .catch(err => {
           console.log(err)
