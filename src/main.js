@@ -9,12 +9,6 @@ Vue.prototype.$http = Axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
 
 Vue.filter('formatDate', str => {
   if (!str) return ''
@@ -29,7 +23,7 @@ Vue.filter('formatDate', str => {
   } else if (time / 360000 < 24) {
     return parseInt(time / 360000) + '小时前'
   } else if (time / 86400000 < 31) {
-    return parseInt(time / 86400000) + '天前'
+    return Math.ceil(time / 86400000) + '天前'
   } else if (time / 2592000000 < 12) {
     return parseInt(time / 2592000000) + '月前'
   } else {
@@ -50,3 +44,11 @@ Vue.filter('tabFormatter', post => {
     return '招聘'
   }
 })
+
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
