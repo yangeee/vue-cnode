@@ -24,6 +24,10 @@ export default {
   margin: 0;
   padding: 0;
 }
+body{
+  min-height: 100vh;
+  background: #E2E0E2;
+}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

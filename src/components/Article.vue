@@ -17,9 +17,12 @@
       <div class="topbar">回复</div>
       <div v-for="(reply, index) in post.replies" :key="index" class="replySec">
         <div class="replyUP">
-          <route-link :to="userInfo">
+          <router-link :to="{
+            name: 'user_info',
+            params:{name: reply.author.loginname}
+            }">
             <img :src="reply.author.avatar_url" alt="头像">
-          </route-link>
+          </router-link>
           <span>{{reply.author.loginname}}</span>
           <span>{{index+1}}楼</span>
           <span v-if="reply.ups.length>0">{{reply.ups.length}}</span>
