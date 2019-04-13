@@ -1,4 +1,4 @@
-<template>
+<template v-if="userinfo">
   <div class="UserInfo">
     <div class="userInfomation">
       <section>
@@ -15,7 +15,8 @@
               :to="{
               name: 'post_content',
               params:{
-                id: item.id
+                id: item.id,
+                name: item.author.loginname
               }
             }"
             >{{item.title}}</router-link>
@@ -27,11 +28,12 @@
         <p>创建的主题</p>
         <ul>
           <li v-for="(item, index) in userinfo.recent_topics" :key="index">
-             <router-link
+            <router-link
               :to="{
               name: 'post_content',
               params:{
-                id: item.id
+                id: item.id,
+                name: item.author.loginname
               }
             }"
             >{{item.title}}</router-link>
@@ -72,7 +74,7 @@ export default {
 
 
 <style scoped>
-*{
+* {
   margin: 0;
   padding: 0;
 }

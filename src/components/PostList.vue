@@ -19,49 +19,61 @@
             <span
               :class="[{put_good: (post.good == true), put_top: (post.top == true), 'topiclist-tab':(post.good != true && post.top != true)}]"
             >{{ post | tabFormatter}}</span>
-            <router-link :to="{
+            <router-link
+              :to="{
               name:'post_content',
               params:{
-                id: post.id
+                id: post.id,
+                name: post.author.loginname
               }
-            }">
-            <span>{{post.title}}</span>
+            }"
+            >
+              <span>{{post.title}}</span>
             </router-link>
             <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
           </span>
         </li>
       </ul>
     </div>
+    <pagination @handle-list="renderList"></pagination>
   </div>
 </template>
 
 
 <script>
-import { log } from 'util';
+import pagination from '@/components/Pagination'
 export default {
   name: 'PostList',
   data() {
     return {
       isLoading: false,
-      posts: []
+      posts: [],
+      postPage: 1
     }
+  },
+  components: {
+    pagination
   },
   methods: {
     getData() {
       this.$http.get('https://cnodejs.org/api/v1/topics', {
-        page: 1,
-        limit: 20
+        params: {
+          page: this.postPage,
+          limit: 15
+        }
       })
         .then(res => {
           this.isLoading = true
           this.posts = res.data.data
-          console.log(res)
-          
-          
+          console.log(this.posts)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    renderList(value) {
+      this.postPage = value
+      this.getData()
     }
   },
   beforeMount() {

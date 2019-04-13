@@ -17,10 +17,12 @@
       <div class="topbar">回复</div>
       <div v-for="(reply, index) in post.replies" :key="index" class="replySec">
         <div class="replyUP">
-          <router-link :to="{
+          <router-link
+            :to="{
             name: 'user_info',
             params:{name: reply.author.loginname}
-            }">
+            }"
+          >
             <img :src="reply.author.avatar_url" alt="头像">
           </router-link>
           <span>{{reply.author.loginname}}</span>
@@ -37,7 +39,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'Article',
   data() {
     return {
       post: {
@@ -51,14 +53,17 @@ export default {
         .then(res => {
           if (res.data.success == true)
             this.post = res.data.data
-          console.log(this.post.author.loginname);
-
         })
         .catch()
     }
   },
   beforeMount() {
     this.getArticleData()
+  },
+  watch:{
+    '$route'(to, from){
+      this.getArticleData()
+    }
   }
 }
 </script>
@@ -79,7 +84,6 @@ export default {
 }
 .article {
   max-width: 1100px;
-  margin: 0 auto;
 }
 .article:not(:first-child) {
   margin-right: 340px;

@@ -2,7 +2,10 @@
   <div id="app">
     <Header></Header>
     <div class="main">
-      <router-view name="main"></router-view>
+      <div class="app_article">
+        <router-view name="main"></router-view>
+        <router-view name="sidebar"></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -24,12 +27,18 @@ export default {
   margin: 0;
   padding: 0;
 }
-body{
+body {
   min-height: 100vh;
-  background: #E2E0E2;
+  background: #e2e0e2;
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.app_article{
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+}
+
 </style>
