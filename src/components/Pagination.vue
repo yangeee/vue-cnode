@@ -10,7 +10,7 @@
       @click="btnChange(btn)"
     >{{btn}}</button>
     <button @click="btnChange">下一页</button>
-  </div>
+  </div>              
 </template>
 
 
