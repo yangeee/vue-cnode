@@ -22,7 +22,7 @@ export default {
     return {
       pagebtns: [1, 2, 3, 4, 5, '.....'],
       currentPage: 1,
-      jduge: false
+      jduge: false                
     }
   },
   methods: {
