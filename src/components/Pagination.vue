@@ -14,7 +14,7 @@
 </template>
 
 
-<script>
+<script>                
 import $ from 'jquery'
 export default {
   name: 'Pagination',
