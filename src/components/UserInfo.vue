@@ -46,7 +46,6 @@
 
 
 <script>
-import { log } from 'util';
 export default {
   name: 'UserInfo',
   data() {
@@ -96,6 +95,8 @@ export default {
 .userInfomation .topics {
   font-size: 0.72rem;
   border-top: 10px #dddddd solid;
+}
+.userInfomation .topics {
 }
 .userInfomation > div > p {
   padding: 12px 0 12px 12px;

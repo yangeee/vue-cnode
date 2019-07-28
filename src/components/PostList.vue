@@ -86,6 +86,7 @@ export default {
 <style scoped>
 .PostList {
   background-color: #e1e1e1;
+  margin: 0 auto;
 }
 .posts {
   margin-top: 10px;

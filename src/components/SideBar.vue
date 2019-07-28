@@ -18,7 +18,7 @@
             :to="{
               name:'post_content',
               params:{
-                id: list.id,
+                id: list.id,//传给路由里面的参数
                 name: list.author.loginname
               }
             }"
@@ -89,6 +89,8 @@ export default {
 .authorsummay,
 .recent_replies,
 .recent_topics {
+  max-height:245px;
+  min-width: 300px;
   background-color: #fff;
 }
 .authorinfo {
